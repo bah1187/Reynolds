@@ -1,6 +1,6 @@
 /* avast, matey, acquire ye compass */
 @import "compass/css3", "compass/support", "../../shared/sass/utilities/functions", "../../shared/sass/utilities/mixins", "../../shared/sass/utilities/extends", "../../shared/sass/utilities/normalize.v4.2";
-
+@import '../../3461/shared/scss/social-icons';
 
 /*!
                 Title:    Reynolds - FULL TB 2.0
@@ -17,13 +17,41 @@ custom fonts
 ================================================================= */
 
 // @font-face{
-// 	font-family:TradeGothicLTCom-Bold;
-// 	src:url(../fonts/2D0A1D_0_0.eot);
-// 	src:url(../fonts/2D0A1D_0_0.eot?#iefix) format("embedded-opentype"),
-// 	url(../fonts/2D0A1D_0_0.woff2) format("woff2"),
-// 	url(../fonts/2D0A1D_0_0.woff) format("woff"),
-// 	url(../fonts/2D0A1D_0_0.ttf) format("truetype");
+// 	font-family:Avenir-Medium;
+// 	src:url(../v1_0/fonts/AvenirLTStd-Medium.eot);
+// 	src:url(..v1_0/fonts/AvenirLTStd-Medium.eot?#iefix) format("embedded-opentype"),
+// 	url(../v1_0/fonts/AvenirLTStd-Medium.woff2) format("woff2"),
+// 	url(../v1_0/fonts/AvenirLTStd-Medium.woff) format("woff"),
+// 	url(../v1_0/fonts/AvenirLTStd-Medium.ttf) format("truetype");
 // }
+
+// @font-face{
+// 	font-family:Avenir-Roman;
+// 	src:url(../v1_0/fonts/AvenirLTStd-Roman.eot);
+// 	src:url(../v1_0/fonts/AvenirLTStd-Roman.eot?#iefix) format("embedded-opentype"),
+// 	url(../v1_0/fonts/AvenirLTStd-Roman.woff2) format("woff2"),
+// 	url(../v1_0/fonts/AvenirLTStd-Roman.woff) format("woff"),
+// 	url(../v1_0/fonts/AvenirLTStd-Roman.ttf) format("truetype");
+// }
+
+
+@font-face{
+	font-family:Avenir-Medium;
+	src:url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Medium.eot);
+	src:url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Medium.eot?#iefix) format("embedded-opentype"),
+	url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Medium.woff2) format("woff2"),
+	url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Medium.woff) format("woff"),
+	url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Medium.ttf) format("truetype");
+}
+
+@font-face{
+	font-family:Avenir-Roman;
+	src:url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Roman.eot);
+	src:url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Roman.eot?#iefix) format("embedded-opentype"),
+	url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Roman.woff2) format("woff2"),
+	url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Roman.woff) format("woff"),
+	url(https://tbcdn.talentbrew.com/company/28690/v1_0/fonts/AvenirLTStd-Roman.ttf) format("truetype");
+}
 
 
 
@@ -38,6 +66,7 @@ $max-width: 1000px;
 // Colors
 $primary: #000;
 $primary-contrast: #fff;
+$blue: #172962;
 $accent: #ccc;
 $text: #000;
 $alert: #c00;
@@ -48,7 +77,8 @@ $line-height: 1.25;
 $reset-line-height: 1;
 
 //Fonts
-$base-font: 'Helvetica', sans-serif;
+$base-font: 'Avenir-Roman', sans-serif;
+$medium-font: 'Avenir-Medium', sans-serif;
 
 
 /* =================================================================
@@ -442,9 +472,248 @@ aside {
 header
 ================================================================= */
 header {
-    > div {
-        @extend %max-content-width;
+  background: #fff;
+
+  > div {
+    padding: 25px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1350px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    max-width: 120px;
+    @include breakpoint($end-small) {
+      max-width: 165px;
     }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    left: 0;
+    background: #fff;
+    padding: 10px 0;
+    border-top: 1px solid #c4caca;
+    box-shadow: 0 5px 5px -3px #111;
+    @include breakpoint($end-small) {
+      display: block !important;
+      position: static;
+      border-top: none;
+      box-shadow: none;
+      width: auto;
+    }
+
+    &__button {
+      font-size: 0;
+      width: 23px;
+      height: 23px;
+      display: block;
+      padding: 0;
+      @include breakpoint($end-small) {
+        display: none;
+      }
+
+      span {
+        background: #172962;
+        height: 4px;
+        width: 100%;
+        display: block;
+        margin-bottom: 4px;
+        transition: 0.4s;
+      }
+    }
+
+    &__list {
+      padding: 0 0 10px;
+      box-shadow: 0 5px 5px -3px #111;
+      @include breakpoint($end-small) {
+        box-shadow: none;
+        display: inline-block;
+        position: relative;
+        padding: 0;
+      }
+    }
+
+    &__item {
+      margin-bottom: 10px;
+      padding: 0 10px;
+      @include breakpoint($end-small) {
+        display: inline-block;
+        margin-bottom: 0;
+        padding: 0 30px 0 0;
+      }
+      @include breakpoint(1000px) {
+        padding: 0 40px 0 0;
+      }
+    }
+
+    &__link {
+      color: $blue;
+      font-size: 14px;
+      @include breakpoint($end-small) {
+        font-size: 17px;
+      }
+      @include breakpoint(1000px) {
+        font-size: 21px;
+      }
+    }
+
+    &__toggle {
+      color: $blue;
+      padding: 0;
+      font-size: 14px;
+      @include breakpoint($end-small) {
+        font-size: 17px;
+      }
+      @include breakpoint(1000px) {
+        font-size: 21px;
+      }
+
+      &:after {
+        content: " ";
+        display: inline-block;
+        height: 8px;
+        width: 15px;
+        background: url("../v1_0/img/blue-arrow.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin-left: 5px;
+        transform: rotate(-90deg);
+      }
+
+      &.active {
+        &:after {
+          content: " ";
+          display: inline-block;
+          height: 8px;
+          width: 15px;
+          background: url("../v1_0/img/blue-arrow.png");
+          background-size: 100%;
+          background-repeat: no-repeat;
+          margin-left: 5px;
+          transform: rotate(0deg);
+        }
+      }
+    }
+
+    &__sub-list {
+      margin-left: 15px;
+      display: none;
+      @include breakpoint($end-small) {
+        position: absolute;
+        right: 35px;
+        top: 40px;
+        border: 1px solid #c4caca;
+        border-radius: 8px;
+        padding: 20px 15px;
+        -webkit-box-shadow: 0 0 12px 1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0 0 12px 1px rgba(0,0,0,0.75);
+        box-shadow: 0 0 12px 1px rgba(0,0,0,0.75);
+      }
+      @include breakpoint($end-small) {
+        right: 40px;
+      }
+
+      &_item {
+        @include breakpoint($end-small) {
+          display: block;
+
+          &:not(:last-of-type) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      &_link {
+        @include breakpoint($end-small) {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &__secondary-list {
+      padding: 17px 10px 0;
+      @include breakpoint($end-small) {
+        display: inline-block;
+        padding: 0;
+      }
+
+      .navigation__item {
+        @include breakpoint($end-small) {
+          &:last-of-type {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* =================================================================
+Footer
+================================================================= */
+
+.footer {
+  background: #fff;
+  padding: 50px 20px 20px;
+  @include clearfix;
+  max-width: 1380px;
+  margin: 0 auto;
+
+  &__list {}
+
+  &__item {
+    text-align: center;
+    padding: 25px 20px;
+    @include breakpoint($end-small) {
+      display: inline;
+      padding: 0;
+      text-align: left;
+    }
+    @include breakpoint(1140px) {
+      margin-bottom: 0;
+    }
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #000;
+      @include breakpoint($end-small) {
+        border-bottom: none;
+
+        &:after {
+          content: "|";
+          display: inline-block;
+          margin: 0 2% 10px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  &__link {
+    color: #06377b;
+    font-size: 21px;
+    line-height: 1;
+  }
+
+  &__copyright {
+    color: #06377b;
+    text-align: center;
+    font-size: 21px;
+    margin-top: 8px;
+    @include breakpoint(1140px) {
+      clear: both;
+      float: left;
+    }
+  }
 }
 
 /* =================================================================
@@ -1311,80 +1580,52 @@ social share - need to update icon references to match shared resources
 social media - need to update icon references to match media resources
 ================================================================= */
 .social-media {
-    ul {
-        list-style: none;
-        margin: 0;
+	ul {
+	   text-align: center;
+     padding: 20px 0;
+     @include breakpoint(1140px) {
+       float: right;
+     }
+	}
+
+	li {
+		display: inline-block;
+
+		&:not(:last-of-type) {
+			padding-right: 5px;
+		}
+	}
+
+	a {
+		display: block;
+		text-indent: -999em;
+		overflow: hidden;
+		text-align: left;
+		background: center / contain no-repeat;
+		width: 46px;
+		height: 46px;
+
+    &.social-media-facebook, &.facebook {
+      background-position: 0px 2px !important;
     }
-
-    li {
-        display: inline-block;
-    }
-
-    a {
-        display: block;
-        height: 32px;
-        overflow: hidden;
-        text-align: left;
-        text-indent: -9999em;
-        width: 32px;
-
-        &:hover, &:focus {
-            box-shadow: 1px 1px 2px 0 rgba(0,0,0,.5);
-        }
-    }
+	}
 }
 
-.social-media-sprite, .social-media-facebook, .social-media-glassdoor, .social-media-googleplus, .social-media-instagram, .social-media-linkedin, .social-media-pinterest, .social-media-rss, .social-media-tumblr, .social-media-twitter, .social-media-viadeo, .social-media-xing, .social-media-youtube {
-    background-image: url("../../../img/core/social-media.png");
-    background-repeat: no-repeat
-}
+.social-media {
+	a {
+		&.social-media-twitter {
+			@include icon-bg-twitter(#004593, none);
+		}
 
-.social-media-facebook {
-    background-position: 0 0
-}
+		&.social-media-facebook {
+			@include icon-bg-facebook(#004593, none);
+      background-size: 80%;
+		}
 
-.social-media-glassdoor {
-    background-position: 0 -32px
-}
-
-.social-media-googleplus {
-    background-position: 0 -64px
-}
-
-.social-media-instagram {
-    background-position: 0 -96px
-}
-
-.social-media-linkedin {
-    background-position: 0 -128px
-}
-
-.social-media-pinterest {
-    background-position: 0 -160px
-}
-
-.social-media-rss {
-    background-position: 0 -192px
-}
-
-.social-media-tumblr {
-    background-position: 0 -224px
-}
-
-.social-media-twitter {
-    background-position: 0 -256px
-}
-
-.social-media-viadeo {
-    background-position: 0 -288px
-}
-
-.social-media-xing {
-    background-position: 0 -320px
-}
-
-.social-media-youtube {
-    background-position: 0 -352px
+		&.social-media-linkedin{
+			@include icon-bg-linkedin(#004593, none);
+		}
+	}
 }
 
 /* =================================================================

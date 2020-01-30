@@ -68,3 +68,22 @@ global variables
             return;
         });
 })();
+
+/* =========================================================================
+Nav Toggles
+========================================================================== */
+
+$(document).ready(function(){
+
+  $('.js-nav-button').click(function(){
+      $('.navigation').slideToggle('fast');
+  });
+
+  $('.js-sub-list-toggle').click(function(){
+      $('.js-sub-list').slideToggle('fast');
+      $(this).toggleClass('active');
+  });
+
+
+
+});
